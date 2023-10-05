@@ -1,0 +1,94 @@
+Das Programm ermöglicht es, Datensätze durch Aufruf von verschiedenen 
+Funktionen in der "generateData.php" zusammenzustellen.
+
+Folgende Funktionen sind verfügbar:
+
+    Vornamen
+    Nachnamen
+    E-Mail-Adressen, die einzigartig sind (maximal 10.800 Adressen)
+    Straßen
+    Postleitzahlen (entsprechend der Orte)
+    Orte (entsprechend der Postleitzahlen)
+    Datum
+    Datum mit Enddatum
+    Datum und Uhrzeit
+    Passwörter (bei der ersten Erstellung einzigartig durch Schleifendurchlauf) gehasht
+    Random Passwörter - 8 stellig nicht gehasht
+    Zahlen
+    Zahlen von-bis
+    Preise mit 2 Nachkommastellen
+    GameKeys, die einzigartig sind
+    Developer
+    Publisher
+    Genre
+
+
+
+    Info:
+        ParameterAngabe - $Wert => gehören genau so abgeschrieben
+                        Typesiert Name => sind eigene Werte zum setzten
+                        optional => sind optionale Werte
+
+        In der globals.php stehen alle Arrays und können neue hinzugefügt werden.
+
+    
+
+    comma() setzt ein Komma.
+    
+    getEmail($finishEmail, $num) setzt eine einzigartige E-Mail-Adresse und ist auf
+        maximal 10.800 verschiedene Adressen beschränkt.
+    
+    randomDate(int BeginnJahr, int EndJahr) setzt ein zufälliges Datum zwischen zwei Jahren.
+    
+    endDate(randomDate(int Von, int Bis), int VonTage, int BisTage) setzt ein
+        zufälliges Enddatum zwischen 10 und 30 Tagen nach dem zufälligen Startdatum.
+    
+    getPassword($password, $num + 1) setzt ein gehashtes Passwort. 
+        Das Passwort wird durch die ID des Benutzers ergänzt.
+
+    randomPassword() setzt ein 8 stelliges zufällig generiertes Passwort.
+        Enthält: Groß-KleinBuchstaben, Zahlen, SonderZeichen 
+    
+    getCity($plzArray,$randomNum) setzt eine zufällige Stadt aus einer Liste 
+        von Postleitzahlen.
+
+        benötigt: $randomNum = mt_rand(0, count($plzArray) - 1);
+                    Um Zip und City gleich zu halten.
+    
+    getZip($plzArray,$randomNum) setzt eine zufällige Postleitzahl aus einer 
+        Liste von Postleitzahlen.
+
+        benötigt: $randomNum = mt_rand(0, count($plzArray) - 1);
+                    Um Zip und City gleich zu halten.
+    
+    getInt(int Von, int Bis) setzt eine zufällige Ganzzahl zwischen zwei Werten.
+    
+    getTimestamp(int beginnyear,int endyear) setzt ein zufälliges 
+        Datum mit Uhrzeit.
+    
+    getString(array $arr) setzt einen zufälligen String aus einem Array.
+    
+    getPrice(int Von, int Bis) setzt einen zufälligen Preis mit zwei Nachkommastellen.
+    
+    getCode($num,$codes) gibt einen bestimmten Code aus der generierten Code-Liste zurück.
+
+        benötigt: generateCodes($codeArray, optional int => wie viele Codes generiert werden DEFAULT 1000) 
+                    generiert einzigartige Codes in der Form AAAA-AAAA-AAAA.
+
+    getArrayElem(array $arr,$num) geht durch ein Array durch und setzt jeden schleifendurchlauf
+        eines.
+
+
+
+
+
+Beispiele:
+
+    getString($firstNameArray);
+    comma();
+    getString($lastNameArray);
+    comma();
+    getEmail($finishEmail,$num);
+    comma();
+    randomDate(2018,2022);
+
